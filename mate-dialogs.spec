@@ -12,6 +12,7 @@ BuildRequires:	mate-doc-utils
 BuildRequires:	pkgconfig(gtk+)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	rarian-compat
+BuildRequires:	rpmbuild(find_lang) >= 1.36
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -36,7 +37,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{name} --with-gnome
+%find_lang %{name} --with-omf --with-mate --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -46,7 +47,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS COPYING README
 %attr(755,root,root) %{_bindir}/gdialog
 %attr(755,root,root) %{_bindir}/matedialog
-%{_mandir}/man1/*
-%{_datadir}/mate/help/matedialog
-%{_datadir}/omf/matedialog
+%{_mandir}/man1/matedialog.1*
 %{_datadir}/matedialog
