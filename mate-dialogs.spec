@@ -2,15 +2,16 @@ Summary:	Displays dialog boxes from shell scripts
 Name:		mate-dialogs
 Version:	1.5.0
 Release:	1
-License:	LGPLv2+ and GPLv2+
+License:	LGPL v2+ and GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
 # Source0-md5:	3c38db321f01ccf46fa7a48917e1a306
-URL:		http://mate-desktop.org/
+URL:		http://wiki.mate-desktop.org/mate-dialogs
+BuildRequires:	gtk+-devel
+BuildRequires:	gtk+2-devel
+BuildRequires:	libmatenotify-devel >= 1.1.0
 BuildRequires:	mate-common
 BuildRequires:	mate-doc-utils
-BuildRequires:	pkgconfig(gtk+)
-BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	rarian-compat
 BuildRequires:	rpmbuild(find_lang) >= 1.36
 BuildRequires:	tar >= 1:1.22
