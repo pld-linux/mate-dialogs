@@ -21,7 +21,6 @@ BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libnotify-devel >= 0.7.0
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig
-BuildRequires:	rarian-compat
 BuildRequires:	rpmbuild(find_lang) >= 1.36
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
@@ -40,12 +39,12 @@ Wyświetlanie okien dialogowych z poziomu skryptów powłoki.
 
 %prep
 %setup -q
+
+%build
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%build
-
 %configure \
 	--enable-libnotify \
 	--disable-silent-rules \
@@ -58,10 +57,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/cmn
-
-# mate-dialogs gettext domain, matedialog mate help and omf files
-%find_lang %{name} --with-omf --with-mate --all-name
+# mate-dialogs gettext domain, matedialog mate help files
+%find_lang %{name} --with-mate --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
